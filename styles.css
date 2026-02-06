@@ -6,12 +6,19 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    touch-action: pan-y;
+    touch-action: none;
 }
 
 /* 공통 스타일 */
@@ -22,7 +29,8 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    overflow-y: auto;
+    height: 100dvh;
+    overflow: hidden;
     z-index: 1;
 }
 
@@ -32,15 +40,18 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top, 0));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
 }
 
 /* 배경 그라데이션 */
 .background-gradient {
     position: fixed;
-    top: 0;
+    top: calc(-1 * env(safe-area-inset-top, 0));
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100vh + env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0));
+    height: calc(100dvh + env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0));
     background: linear-gradient(135deg, #ffb3d9 0%, #ffd9ec 50%, #ffe6f2 100%);
     z-index: -1;
     transition: background 1s ease;
@@ -53,10 +64,11 @@ body {
 /* 떠다니는 하트 */
 .floating-hearts {
     position: fixed;
-    top: 0;
+    top: calc(-1 * env(safe-area-inset-top, 0));
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100vh + env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0));
+    height: calc(100dvh + env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0));
     pointer-events: none;
     z-index: 0;
 }
@@ -184,10 +196,11 @@ body {
 /* STEP 2: RSVP 반응 */
 .confetti-container {
     position: fixed;
-    top: 0;
+    top: calc(-1 * env(safe-area-inset-top, 0));
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100vh + env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0));
+    height: calc(100dvh + env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0));
     pointer-events: none;
     z-index: 10;
 }
@@ -319,6 +332,73 @@ body {
     margin-bottom: 20px;
 }
 
+.route-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 25px 0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.airport-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.from-group {
+    order: 1;
+}
+
+.to-group {
+    order: 3;
+}
+
+.airport-code {
+    font-size: 36px;
+    font-weight: 900;
+    color: #d63384;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.arrow-icon {
+    order: 2;
+    width: 40px;
+    height: 3px;
+    position: relative;
+    margin: 0 15px;
+    background: #d63384;
+    align-self: center;
+}
+
+.arrow-icon::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid #d63384;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+.city-name {
+    font-size: 14px;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .info-row {
     display: flex;
     justify-content: space-between;
@@ -355,6 +435,124 @@ body {
     color: #d63384;
     font-style: italic;
     line-height: 1.6;
+}
+
+.terms-container {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.terms-content {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.terms-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #d63384;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.terms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terms-list li {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.terms-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #d63384;
+    font-weight: bold;
+}
+
+.terms-checkbox-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.terms-checkbox {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d63384;
+    border-radius: 4px;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.terms-checkbox:checked + .checkbox-custom {
+    background: #d63384;
+    border-color: #d63384;
+}
+
+.terms-checkbox:checked + .checkbox-custom::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.terms-text {
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn-journey {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: white;
+    opacity: 0.5;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.btn-journey:not(:disabled) {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btn-journey:not(:disabled):hover {
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-journey:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* STEP 4: 메인 고백 */
@@ -418,10 +616,10 @@ body {
 /* STEP 5: 뉴욕 데이트 티저 */
 .nyc-skyline {
     position: fixed;
-    bottom: 0;
+    bottom: calc(-1 * env(safe-area-inset-bottom, 0));
     left: 0;
     width: 100%;
-    height: 200px;
+    height: calc(200px + env(safe-area-inset-bottom, 0));
     background: linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
     z-index: 0;
     pointer-events: none;
@@ -590,6 +788,52 @@ body {
         font-size: 16px;
         padding: 16px 25px;
     }
+    
+    .airport-code {
+        font-size: 28px;
+    }
+    
+    .route-section {
+        gap: 15px;
+        padding: 20px 0;
+    }
+    
+    .arrow-icon {
+        width: 30px;
+        margin: 0 10px;
+    }
+    
+    .arrow-icon::after {
+        border-left: 10px solid #d63384;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        right: -6px;
+    }
+    
+    .city-name {
+        font-size: 12px;
+        font-weight: 700;
+    }
+    
+    .airport-code {
+        font-size: 28px;
+    }
+    
+    .terms-container {
+        max-width: 100%;
+    }
+    
+    .terms-content {
+        padding: 15px;
+    }
+    
+    .terms-list li {
+        font-size: 11px;
+    }
+    
+    .terms-text {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 360px) {
@@ -613,15 +857,28 @@ body {
     height: 10px;
     background: #ff6b9d;
     animation: confettiFall 3s linear forwards;
+    will-change: transform, opacity;
 }
 
 @keyframes confettiFall {
     0% {
-        transform: translateY(-100vh) rotate(0deg);
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
         opacity: 1;
     }
+    25% {
+        transform: translateY(25vh) translateX(calc(var(--drift, 0) * 1vw)) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(50vh) translateX(calc(var(--drift, 0) * 1.5vw)) rotate(180deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(75vh) translateX(calc(var(--drift, 0) * 2vw)) rotate(270deg);
+        opacity: 0.7;
+    }
     100% {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translateY(110vh) translateX(calc(var(--drift, 0) * 2.5vw)) rotate(720deg);
         opacity: 0;
     }
 }

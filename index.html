@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Valentine's Invitation 💕</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -47,21 +47,24 @@
                     <h2>BOARDING PASS</h2>
                 </div>
                 <div class="ticket-info">
-                    <div class="info-row">
-                        <span class="label">Passenger:</span>
-                        <span class="value">Eunsoo</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="label">From:</span>
-                        <span class="value">Seoul (ICN)</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="label">To:</span>
-                        <span class="value">New York (JFK)</span>
+                    <div class="route-section">
+                        <div class="airport-group from-group">
+                            <div class="airport-code from-code">ICN</div>
+                            <div class="city-name">SEOUL</div>
+                        </div>
+                        <div class="arrow-icon"></div>
+                        <div class="airport-group to-group">
+                            <div class="airport-code to-code">JFK</div>
+                            <div class="city-name">NEW YORK</div>
+                        </div>
                     </div>
                     <div class="info-row">
                         <span class="label">Date:</span>
                         <span class="value">Feb 14, 2026</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Passenger:</span>
+                        <span class="value">Eunsoo</span>
                     </div>
                     <div class="info-row">
                         <span class="label">Seat:</span>
@@ -75,6 +78,23 @@
                 <div class="ticket-footer">
                     <p class="ticket-quote">Nothing travels faster than missing you</p>
                 </div>
+            </div>
+            <div class="terms-container">
+                <div class="terms-content">
+                    <p class="terms-title">Terms & Conditions</p>
+                    <ul class="terms-list">
+                        <li>By accepting, you agree to be my Valentine ❤️</li>
+                        <li>You must bring your heart (and maybe a smile) 💕</li>
+                        <li>Distance is just a number when we're together ✈️</li>
+                        <li>This journey is non-refundable, but guaranteed to be memorable 🎁</li>
+                    </ul>
+                </div>
+                <label class="terms-checkbox-label">
+                    <input type="checkbox" id="termsCheckbox" class="terms-checkbox" onchange="toggleJourneyButton()">
+                    <span class="checkbox-custom"></span>
+                    <span class="terms-text">I accept the terms and conditions of this journey</span>
+                </label>
+                <button class="btn btn-journey" id="journeyButton" onclick="handleJourney()" disabled>I Accept This Journey ❤️</button>
             </div>
         </div>
     </div>
