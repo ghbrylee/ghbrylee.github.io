@@ -233,7 +233,7 @@ function showStep(stepNumber) {
 // STEP 4: 타이핑 애니메이션
 function typeConfession() {
     const confessionText = document.getElementById('confessionText');
-    const text = 'Will you be my Valentine? ❤️';
+    const text = 'Will you be my Valentine? 😘';
     confessionText.textContent = '';
     
     let i = 0;

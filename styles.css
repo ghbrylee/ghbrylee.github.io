@@ -443,7 +443,7 @@ body {
 .boarding-pass {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 26px 26px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     position: relative;
     animation: ticketShake 1.2s ease-out 0.8s;
@@ -616,7 +616,7 @@ body {
 }
 
 .terms-container {
-    margin-top: 30px;
+    margin-top: 18px;
     width: 100%;
     max-width: min(400px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
     animation: fadeInUp 0.8s ease-out 0.5s both;
@@ -669,7 +669,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -1132,7 +1132,15 @@ body {
     }
     
     .boarding-pass {
-        padding: 25px 20px;
+        padding: 22px 18px;
+    }
+
+    .terms-container {
+        margin-top: 14px;
+    }
+
+    .terms-checkbox-label {
+        margin-bottom: 12px;
     }
     
     .teaser-card {
