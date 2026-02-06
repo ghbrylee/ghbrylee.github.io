@@ -42,6 +42,8 @@ body {
     padding: 20px;
     padding-top: calc(20px + env(safe-area-inset-top, 0));
     padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
+    padding-left: calc(20px + env(safe-area-inset-left, 0));
+    padding-right: calc(20px + env(safe-area-inset-right, 0));
 }
 
 /* 배경 그라데이션 */
@@ -132,12 +134,13 @@ body {
     border-radius: 20px;
     padding: 30px 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 90%;
+    max-width: min(400px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
+    width: 100%;
     text-align: center;
     animation: cardAppear 0.8s ease-out;
     margin-bottom: 25px;
     backdrop-filter: blur(10px);
+    box-sizing: border-box;
 }
 
 @keyframes cardAppear {
@@ -191,9 +194,10 @@ body {
 
 /* STEP 1: RSVP SECTION */
 .rsvp-section {
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: min(400px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
     animation: fadeInUp 0.8s ease-out 0.3s both;
+    box-sizing: border-box;
 }
 
 .rsvp-title {
@@ -419,9 +423,10 @@ body {
 
 /* STEP 3: 비행기 티켓 */
 .ticket-container {
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: min(400px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
     animation: slideUp 0.8s ease-out;
+    box-sizing: border-box;
 }
 
 @keyframes slideUp {
@@ -442,6 +447,8 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     position: relative;
     animation: ticketShake 1.2s ease-out 0.8s;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @keyframes ticketShake {
@@ -611,8 +618,9 @@ body {
 .terms-container {
     margin-top: 30px;
     width: 100%;
-    max-width: 400px;
+    max-width: min(400px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
     animation: fadeInUp 0.8s ease-out 0.5s both;
+    box-sizing: border-box;
 }
 
 .terms-content {
@@ -746,6 +754,11 @@ body {
 .confession-container {
     text-align: center;
     z-index: 2;
+    width: 100%;
+    max-width: calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px);
+    padding: 0 calc(20px + env(safe-area-inset-left, 0));
+    padding-right: calc(20px + env(safe-area-inset-right, 0));
+    box-sizing: border-box;
 }
 
 .confession-text {
@@ -798,10 +811,11 @@ body {
     flex-direction: column;
     gap: 15px;
     margin: 30px auto 0;
-    width: 90%;
-    max-width: 300px;
+    width: 100%;
+    max-width: min(300px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
     animation: fadeInUp 0.8s ease-out 1s both;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .btn-confession {
@@ -836,8 +850,10 @@ body {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 40px 30px;
-    max-width: 90%;
+    max-width: min(90%, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
+    width: 100%;
     text-align: center;
+    box-sizing: border-box;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     z-index: 2;
     animation: cardAppear 0.8s ease-out;
@@ -899,7 +915,9 @@ body {
 
 .ending-photo-section {
     position: relative;
-    width: 100%;
+    width: calc(100% + env(safe-area-inset-left, 0) + env(safe-area-inset-right, 0));
+    margin-left: calc(-1 * env(safe-area-inset-left, 0));
+    margin-right: calc(-1 * env(safe-area-inset-right, 0));
     height: 75vh;
     overflow: hidden;
     z-index: 1;
@@ -964,8 +982,8 @@ body {
 
 .photo-location {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0));
+    right: calc(20px + env(safe-area-inset-right, 0));
     text-align: right;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
