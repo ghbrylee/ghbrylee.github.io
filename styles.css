@@ -621,6 +621,9 @@ body {
     max-width: min(400px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
     animation: fadeInUp 0.8s ease-out 0.5s both;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .terms-content {
@@ -718,6 +721,8 @@ body {
 
 .btn-journey {
     width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
     background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
     color: white;
     opacity: 0.5;
