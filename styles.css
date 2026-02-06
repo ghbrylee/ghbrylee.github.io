@@ -108,11 +108,29 @@ body {
     }
 }
 
+/* STEP 1: HEADER 영역 */
+.step1-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-top: calc(env(safe-area-inset-top, 0) + 20px);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.header-title {
+    font-size: 28px;
+    color: #d63384;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(214, 51, 132, 0.1);
+}
+
 /* STEP 1: 초대장 카드 */
 .invitation-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
-    padding: 40px 30px;
+    padding: 35px 25px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     text-align: center;
@@ -132,27 +150,158 @@ body {
     }
 }
 
-.card-content h1 {
-    font-size: 24px;
-    color: #d63384;
-    margin-bottom: 20px;
-    line-height: 1.4;
-    font-weight: 600;
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.card-content p {
+.card-to {
     font-size: 18px;
-    color: #666;
+    color: #d63384;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.card-body {
+    text-align: left;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+.card-line {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
     line-height: 1.6;
 }
 
-/* RSVP 버튼 */
-.rsvp-buttons {
+.card-spacing {
+    margin-top: 8px;
+}
+
+.card-date {
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* STEP 1: RSVP SECTION */
+.rsvp-section {
+    width: 90%;
+    max-width: 400px;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.rsvp-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.rsvp-title-main {
+    font-size: 18px;
+    color: #d63384;
+    font-weight: 600;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.rsvp-title-sub {
+    font-size: 14px;
+    color: #d63384;
+    margin: 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.rsvp-options {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 90%;
-    max-width: 300px;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.rsvp-option {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffb3d9;
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rsvp-option:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #ff8fab;
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.15);
+}
+
+.rsvp-option.selected {
+    background: rgba(255, 182, 193, 0.2);
+    border-color: #ff6b9d;
+}
+
+.rsvp-radio {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #d63384;
+}
+
+.rsvp-option-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 4px;
+}
+
+.rsvp-option-main {
+    font-size: 16px;
+    color: #d63384;
+    font-weight: 600;
+}
+
+.rsvp-option-sub {
+    font-size: 13px;
+    color: #666;
+}
+
+.btn-rsvp-send {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: white;
+    padding: 18px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-rsvp-send:hover:not(:disabled) {
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-rsvp-send:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-rsvp-send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: linear-gradient(135deg, #ffb3d9 0%, #ffc0cb 100%);
 }
 
 .btn {
@@ -757,6 +906,52 @@ body {
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
+    /* STEP 1 반응형 */
+    .header-title {
+        font-size: 24px;
+    }
+    
+    .card-to {
+        font-size: 16px;
+    }
+    
+    .card-line {
+        font-size: 15px;
+    }
+    
+    .card-date {
+        font-size: 13px;
+    }
+    
+    .rsvp-title-main {
+        font-size: 16px;
+    }
+    
+    .rsvp-title-sub {
+        font-size: 13px;
+    }
+    
+    .rsvp-option {
+        padding: 12px 15px;
+    }
+    
+    .rsvp-option-main {
+        font-size: 15px;
+    }
+    
+    .rsvp-option-sub {
+        font-size: 12px;
+    }
+    
+    .btn-rsvp-send {
+        font-size: 16px;
+        padding: 16px 25px;
+    }
+    
+    .invitation-card {
+        padding: 30px 20px;
+    }
+    
     .card-content h1 {
         font-size: 20px;
     }

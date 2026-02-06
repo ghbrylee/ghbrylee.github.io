@@ -7,19 +7,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- STEP 1: 오프닝 인트로 -->
+    <!-- STEP 1: Valentine Invitation + RSVP -->
     <div id="step1" class="step active">
         <div class="background-gradient"></div>
-        <div class="floating-hearts"></div>
+        
+        <!-- HEADER 영역 -->
+        <div class="step1-header">
+            <h1 class="header-title">💌 Invitation</h1>
+        </div>
+        
+        <!-- INVITATION CARD 영역 -->
         <div class="invitation-card">
             <div class="card-content">
-                <h1 class="greeting">Eunsoo, open my Valentine invitation</h1>
-                <p class="date">February 14, 2026, will you be with me?</p>
+                <h2 class="card-to">To. Eunsoo</h2>
+                <div class="card-body">
+                    <p class="card-line">On February 14, 2026,</p>
+                    <p class="card-line">I have something special</p>
+                    <p class="card-line">I want to share with you.</p>
+                    <p class="card-line card-spacing">Before we begin,</p>
+                    <p class="card-line">I just need your answer.</p>
+                </div>
+                <p class="card-date">📅 February 14, 2026</p>
             </div>
         </div>
-        <div class="rsvp-buttons">
-            <button class="btn btn-yes" onclick="handleRSVP('yes')">Yes, I'll be there 💗</button>
-            <button class="btn btn-maybe" onclick="handleRSVP('maybe')">Hmm… let me think 🙈</button>
+        
+        <!-- RSVP SECTION 영역 -->
+        <div class="rsvp-section">
+            <div class="rsvp-title">
+                <h3 class="rsvp-title-main">RSVP</h3>
+                <p class="rsvp-title-sub">Please send your response by February 14, 2026 💕</p>
+            </div>
+            
+            <div class="rsvp-options">
+                <label class="rsvp-option">
+                    <input type="radio" name="rsvp" value="accept" class="rsvp-radio">
+                    <div class="rsvp-option-content">
+                        <span class="rsvp-option-main">💗 Accepts</span>
+                        <span class="rsvp-option-sub">I'll be there</span>
+                    </div>
+                </label>
+                
+                <label class="rsvp-option">
+                    <input type="radio" name="rsvp" value="thinking" class="rsvp-radio">
+                    <div class="rsvp-option-content">
+                        <span class="rsvp-option-main">🙈 Still thinking</span>
+                        <span class="rsvp-option-sub">Let me think for a moment</span>
+                    </div>
+                </label>
+            </div>
+            
+            <button class="btn btn-rsvp-send" id="rsvpSendButton" onclick="sendRSVP()" disabled>Send My RSVP 💌</button>
         </div>
     </div>
 
@@ -68,33 +105,24 @@
                     </div>
                     <div class="info-row">
                         <span class="label">Seat:</span>
-                        <span class="value">Next to me 💘</span>
+                        <span class="value">Next to me</span>
                     </div>
                     <div class="info-row">
                         <span class="label">Gate:</span>
-                        <span class="value">LOVE</span>
+                        <span class="value">My Heart 💘</span>
                     </div>
                 </div>
                 <div class="ticket-footer">
-                    <p class="ticket-quote">Nothing travels faster than missing you</p>
+                    <p class="ticket-quote">There's no baggage to carry, only you</p>
                 </div>
             </div>
             <div class="terms-container">
-                <div class="terms-content">
-                    <p class="terms-title">Terms & Conditions</p>
-                    <ul class="terms-list">
-                        <li>By accepting, you agree to be my Valentine ❤️</li>
-                        <li>You must bring your heart (and maybe a smile) 💕</li>
-                        <li>Distance is just a number when we're together ✈️</li>
-                        <li>This journey is non-refundable, but guaranteed to be memorable 🎁</li>
-                    </ul>
-                </div>
                 <label class="terms-checkbox-label" onclick="handleCheckboxClick(event)">
                     <input type="checkbox" id="termsCheckbox" class="terms-checkbox" onchange="toggleJourneyButton()">
                     <span class="checkbox-custom"></span>
-                    <span class="terms-text">I accept the terms and conditions of this journey</span>
+                    <span class="terms-text">I Accept This Journey ❤️</span>
                 </label>
-                <button class="btn btn-journey" id="journeyButton" onclick="handleJourney()" disabled>I Accept This Journey ❤️</button>
+                <button class="btn btn-journey" id="journeyButton" onclick="handleJourney()" disabled>Let's Begin 💕</button>
             </div>
         </div>
     </div>

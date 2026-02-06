@@ -13,18 +13,65 @@ const hints = [
 let revealedHints = 0;
 let ticketShown = false;
 
-// STEP 1: RSVP 버튼 클릭 처리
-function handleRSVP(choice) {
+// STEP 1: RSVP 옵션 선택
+function selectRSVP(value) {
+    const radios = document.querySelectorAll('input[name="rsvp"]');
+    radios.forEach(radio => {
+        if (radio.value === value) {
+            radio.checked = true;
+        }
+    });
+    
+    // 시각적 피드백을 위한 클래스 업데이트
+    const options = document.querySelectorAll('.rsvp-option');
+    options.forEach(option => {
+        option.classList.remove('selected');
+        const radio = option.querySelector('input[name="rsvp"]');
+        if (radio && radio.checked) {
+            option.classList.add('selected');
+        }
+    });
+    
+    // 버튼 활성화/비활성화
+    toggleRSVPSendButton();
+}
+
+// STEP 1: RSVP 전송 버튼 활성화/비활성화
+function toggleRSVPSendButton() {
+    const selectedRSVP = document.querySelector('input[name="rsvp"]:checked');
+    const sendButton = document.getElementById('rsvpSendButton');
+    
+    if (sendButton) {
+        if (selectedRSVP) {
+            sendButton.disabled = false;
+            sendButton.style.opacity = '1';
+            sendButton.style.cursor = 'pointer';
+            sendButton.style.pointerEvents = 'auto';
+        } else {
+            sendButton.disabled = true;
+            sendButton.style.opacity = '0.5';
+            sendButton.style.cursor = 'not-allowed';
+            sendButton.style.pointerEvents = 'none';
+        }
+    }
+}
+
+// STEP 1: RSVP 전송 버튼 클릭 처리
+function sendRSVP() {
+    const selectedRSVP = document.querySelector('input[name="rsvp"]:checked');
+    const sendButton = document.getElementById('rsvpSendButton');
+    
+    // 버튼이 비활성화되어 있으면 실행하지 않음
+    if (!selectedRSVP || (sendButton && sendButton.disabled)) {
+        return;
+    }
+    
     // 컨페티 애니메이션 생성
     createConfetti();
     
-    // 응답 메시지 설정
+    // 응답 메시지 설정 (항상 동일한 메시지)
     const responseText = document.getElementById('responseText');
-    if (choice === 'yes') {
-        responseText.textContent = 'Wait… your surprise is arriving 🎁';
-    } else {
-        responseText.textContent = 'Thinking won\'t help! The invitation is already open 😛';
-    }
+    responseText.textContent = 'Wait… your surprise is arriving 🎁';
     
     // STEP 2로 전환
     setTimeout(() => {
@@ -284,6 +331,17 @@ function takeScreenshot() {
 document.addEventListener('DOMContentLoaded', () => {
     // 추가 떠다니는 하트 생성
     createFloatingHearts();
+    
+    // RSVP 라디오 버튼 이벤트 리스너 설정
+    const rsvpRadios = document.querySelectorAll('input[name="rsvp"]');
+    rsvpRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            selectRSVP(radio.value);
+        });
+    });
+    
+    // 초기 버튼 상태 설정 (비활성화)
+    toggleRSVPSendButton();
 });
 
 // 추가 떠다니는 하트 생성
