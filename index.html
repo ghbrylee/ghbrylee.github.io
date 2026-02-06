@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Invitation 💕</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- STEP 1: 오프닝 인트로 -->
+    <div id="step1" class="step active">
+        <div class="background-gradient"></div>
+        <div class="floating-hearts"></div>
+        <div class="invitation-card">
+            <div class="card-content">
+                <h1 class="greeting">Eunsoo, open my Valentine invitation</h1>
+                <p class="date">February 14, 2026, will you be with me?</p>
+            </div>
+        </div>
+        <div class="rsvp-buttons">
+            <button class="btn btn-yes" onclick="handleRSVP('yes')">Yes, I'll be there 💗</button>
+            <button class="btn btn-maybe" onclick="handleRSVP('maybe')">Hmm… let me think 🙈</button>
+        </div>
+    </div>
+
+    <!-- STEP 2: RSVP 반응 -->
+    <div id="step2" class="step">
+        <div class="background-gradient"></div>
+        <div class="confetti-container"></div>
+        <div class="response-message">
+            <p class="message-text" id="responseText"></p>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3: 비행기 티켓 -->
+    <div id="step3" class="step">
+        <div class="background-gradient"></div>
+        <div class="ticket-container">
+            <div class="boarding-pass">
+                <div class="ticket-header">
+                    <div class="airplane-icon">✈️</div>
+                    <h2>BOARDING PASS</h2>
+                </div>
+                <div class="ticket-info">
+                    <div class="info-row">
+                        <span class="label">Passenger:</span>
+                        <span class="value">Eunsoo</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">From:</span>
+                        <span class="value">Seoul (ICN)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">To:</span>
+                        <span class="value">New York (JFK)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Date:</span>
+                        <span class="value">Feb 14, 2026</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Seat:</span>
+                        <span class="value">Next to me 💘</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Gate:</span>
+                        <span class="value">LOVE</span>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <p class="ticket-quote">Nothing travels faster than missing you</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 4: 메인 고백 -->
+    <div id="step4" class="step">
+        <div class="background-gradient"></div>
+        <div class="confession-container">
+            <h1 class="confession-text" id="confessionText"></h1>
+            <div class="heart-beat"></div>
+            <button class="btn btn-confession" onclick="handleConfession()" id="confessionBtn" style="display: none;">
+                Yes, I'm yours 💞
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 5: 뉴욕 데이트 티저 -->
+    <div id="step5" class="step">
+        <div class="background-gradient dark"></div>
+        <div class="nyc-skyline"></div>
+        <div class="teaser-card">
+            <h2 class="teaser-title">And one more thing…</h2>
+            <p class="teaser-text">I planned a special dinner in New York for Valentine's 🍷✨</p>
+            <p class="teaser-hint">The place is… a secret for now. Hint: your kind of vibe</p>
+            <button class="btn btn-hint" onclick="revealHint()">Reveal a hint</button>
+            <div class="hint-container" id="hintContainer"></div>
+        </div>
+    </div>
+
+    <!-- STEP 6: 엔딩 -->
+    <div id="step6" class="step">
+        <div class="background-gradient"></div>
+        <div class="ending-container">
+            <p class="ending-text">Distance doesn't matter. We always find our way back</p>
+            <p class="ending-date">I'll be waiting for you in New York ❤️</p>
+            <div class="ending-buttons">
+                <button class="btn btn-save" onclick="saveInvitation()">Save this invitation</button>
+                <button class="btn btn-screenshot" onclick="takeScreenshot()">Take a screenshot</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
