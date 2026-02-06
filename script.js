@@ -198,6 +198,19 @@ function showStep(stepNumber) {
                 }, 500);
             }
             
+            // STEP 5 표시 시 이미지 로드 처리
+            if (stepNumber === 5) {
+                const photo = document.getElementById('endingPhoto');
+                if (photo) {
+                    // HEIC 파일이 로드되지 않을 경우를 대비한 fallback
+                    photo.onerror = function() {
+                        console.warn('HEIC 이미지가 로드되지 않았습니다. JPG/PNG 형식으로 변환해주세요.');
+                        // 필요시 fallback 이미지 경로 설정
+                        // this.src = 'fallback-image.jpg';
+                    };
+                }
+            }
+            
             // STEP 3 표시 시 버튼이 나타나도록 설정
             if (stepNumber === 3 && !ticketShown) {
                 ticketShown = true;
@@ -283,7 +296,8 @@ function handleConfession() {
     showStep(5);
 }
 
-// STEP 5: 힌트 공개
+// STEP 6: 힌트 공개 (일시적으로 주석처리)
+/*
 function revealHint() {
     if (revealedHints >= hints.length) {
         // 모든 힌트를 공개했으면 STEP 6으로 전환
@@ -315,16 +329,47 @@ function revealHint() {
         }, 3000);
     }
 }
+*/
 
-// STEP 6: 초대장 저장
-function saveInvitation() {
-    // 실제 저장 기능은 브라우저에 따라 다를 수 있음
-    alert('Invitation saved! 💕\n\n(You can add image saving or sharing features)');
-}
-
-// STEP 6: 스크린샷 찍기
-function takeScreenshot() {
-    alert('Please take a screenshot! 📸\n\n(On mobile, use the default screenshot function)');
+// STEP 5: 보딩패스 저장
+function saveBoardingPass() {
+    const boardingPass = document.querySelector('.boarding-pass');
+    if (!boardingPass) {
+        alert('보딩패스를 찾을 수 없습니다.');
+        return;
+    }
+    
+    // html2canvas를 사용하여 보딩패스를 이미지로 변환
+    if (typeof html2canvas === 'undefined') {
+        alert('이미지 저장 기능을 로드하는 중입니다. 잠시 후 다시 시도해주세요.');
+        return;
+    }
+    
+    html2canvas(boardingPass, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        logging: false,
+        useCORS: true
+    }).then(canvas => {
+        // Canvas를 Blob으로 변환
+        canvas.toBlob(blob => {
+            // 다운로드 링크 생성
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'boarding-pass-valentine-2026.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            // 성공 메시지
+            alert('보딩패스가 저장되었습니다! 💕');
+        }, 'image/png');
+    }).catch(error => {
+        console.error('이미지 저장 중 오류 발생:', error);
+        alert('이미지 저장 중 오류가 발생했습니다. 다시 시도해주세요.');
+    });
 }
 
 // 페이지 로드 시 초기화

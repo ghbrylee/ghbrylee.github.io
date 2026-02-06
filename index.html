@@ -132,14 +132,35 @@
         <div class="confession-container">
             <h1 class="confession-text" id="confessionText"></h1>
             <div class="heart-beat"></div>
-            <button class="btn btn-confession" onclick="handleConfession()" id="confessionBtn" style="display: none;">
-                Yes, I'm yours 💞
-            </button>
+            <div class="confession-buttons" id="confessionButtons" style="display: none;">
+                <button class="btn btn-confession" onclick="handleConfession()">
+                    YES!!!! 💕
+                </button>
+                <button class="btn btn-confession" onclick="handleConfession()">
+                    Absolutely YES! 💖
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- STEP 5: 뉴욕 데이트 티저 -->
+    <!-- STEP 5: 엔딩 (The Proof) -->
     <div id="step5" class="step">
+        <div class="background-gradient dark-night"></div>
+        
+        <!-- Photo Section (Hero Image) -->
+        <div class="ending-photo-section">
+            <img src="8b2cd22d8db4932033fc474710e4fd7738107f71d7431a93c5ea3e7508c8b4f4.png" alt="New York together" class="ending-photo" id="endingPhoto">
+            <div class="photo-location">
+                <p class="location-text">40° 45' 38.7" N</p>
+                <p class="location-text">74° 1' 4.85" W</p>
+                <p class="location-subtext">📍 Hudson River, New York</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 6: 뉴욕 데이트 티저 (일시적으로 주석처리) -->
+    <!--
+    <div id="step6" class="step">
         <div class="background-gradient dark"></div>
         <div class="nyc-skyline"></div>
         <div class="teaser-card">
@@ -150,20 +171,9 @@
             <div class="hint-container" id="hintContainer"></div>
         </div>
     </div>
+    -->
 
-    <!-- STEP 6: 엔딩 -->
-    <div id="step6" class="step">
-        <div class="background-gradient"></div>
-        <div class="ending-container">
-            <p class="ending-text">Distance doesn't matter. We always find our way back</p>
-            <p class="ending-date">I'll be waiting for you in New York ❤️</p>
-            <div class="ending-buttons">
-                <button class="btn btn-save" onclick="saveInvitation()">Save this invitation</button>
-                <button class="btn btn-screenshot" onclick="takeScreenshot()">Take a screenshot</button>
-            </div>
-        </div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

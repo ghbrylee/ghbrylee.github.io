@@ -889,38 +889,118 @@ body {
     animation: fadeInUp 0.5s ease-out;
 }
 
-/* STEP 6: 엔딩 */
-.ending-container {
-    text-align: center;
-    z-index: 2;
-    max-width: 90%;
+/* STEP 5: 엔딩 (The Proof) */
+.background-gradient.dark-night {
+    background: linear-gradient(to bottom, 
+        rgba(8, 8, 18, 1) 0%, 
+        rgba(10, 10, 20, 1) 50%,
+        rgba(12, 12, 22, 1) 100%);
 }
 
-.ending-text {
-    font-size: 24px;
-    color: white;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    line-height: 1.6;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.ending-date {
-    font-size: 20px;
-    color: white;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out 0.3s both;
-}
-
-.ending-buttons {
+.ending-photo-section {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+    z-index: 1;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 300px;
-    margin: 0 auto;
-    animation: fadeInUp 0.8s ease-out 0.6s both;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, 
+        rgba(10, 10, 20, 1) 0%, 
+        rgba(15, 15, 25, 1) 100%);
+}
+
+.ending-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: fadeInSlow 1.5s ease-out;
+    display: block;
+    position: relative;
+}
+
+.ending-photo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20%;
+    background: linear-gradient(to bottom, 
+        rgba(8, 8, 18, 1) 0%,
+        rgba(8, 8, 18, 0.8) 30%,
+        rgba(8, 8, 18, 0.4) 70%,
+        transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ending-photo-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to bottom, 
+        transparent 0%,
+        rgba(10, 10, 20, 0.3) 30%,
+        rgba(10, 10, 20, 0.7) 70%,
+        rgba(10, 10, 20, 1) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes fadeInSlow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.photo-location {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-radius: 25px;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.location-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.location-subtext {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 4px 0 0 0;
+    font-style: italic;
+    text-align: right;
+}
+
+
+/* 사진과 배경이 자연스럽게 이어지도록 */
+#step5 {
+    background: linear-gradient(to bottom, 
+        transparent 0%,
+        transparent 75vh,
+        rgba(10, 10, 20, 1) 75vh,
+        rgba(15, 15, 25, 1) 100%);
 }
 
 .btn-save,
@@ -1005,15 +1085,23 @@ body {
         font-size: 16px;
     }
     
-    .ending-text {
-        font-size: 20px;
-        padding: 0 20px;
+    .ending-photo-section {
+        height: 70vh;
     }
     
-    .ending-date {
-        font-size: 18px;
-        padding: 0 20px;
+    .photo-location {
+        bottom: 15px;
+        padding: 10px 16px;
     }
+    
+    .location-text {
+        font-size: 12px;
+    }
+    
+    .location-subtext {
+        font-size: 10px;
+    }
+    
     
     .invitation-card {
         padding: 30px 20px;
