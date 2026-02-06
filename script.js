@@ -154,6 +154,17 @@ function showStep(stepNumber) {
             // STEP 3 표시 시 버튼이 나타나도록 설정
             if (stepNumber === 3 && !ticketShown) {
                 ticketShown = true;
+                // 아이폰 호환성을 위해 초기 상태 설정
+                setTimeout(() => {
+                    const checkbox = document.getElementById('termsCheckbox');
+                    const button = document.getElementById('journeyButton');
+                    if (checkbox && button) {
+                        checkbox.checked = false;
+                        button.disabled = true;
+                        button.style.opacity = '0.5';
+                        button.style.pointerEvents = 'none';
+                    }
+                }, 100);
             }
         }, 300);
     }
@@ -183,6 +194,16 @@ function typeConfession() {
     }, 100);
 }
 
+// STEP 3: 체크박스 클릭 처리 (아이폰 호환성)
+function handleCheckboxClick(event) {
+    event.preventDefault();
+    const checkbox = document.getElementById('termsCheckbox');
+    if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        toggleJourneyButton();
+    }
+}
+
 // STEP 3: 약관 체크박스 토글
 function toggleJourneyButton() {
     const checkbox = document.getElementById('termsCheckbox');
@@ -193,9 +214,11 @@ function toggleJourneyButton() {
         if (checkbox.checked) {
             button.style.opacity = '1';
             button.style.cursor = 'pointer';
+            button.style.pointerEvents = 'auto';
         } else {
             button.style.opacity = '0.5';
             button.style.cursor = 'not-allowed';
+            button.style.pointerEvents = 'none';
         }
     }
 }

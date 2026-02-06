@@ -493,10 +493,16 @@ body {
     margin-bottom: 20px;
     cursor: pointer;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .terms-checkbox {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 .checkbox-custom {
@@ -538,11 +544,15 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    pointer-events: none;
 }
 
 .btn-journey:not(:disabled) {
     opacity: 1;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .btn-journey:not(:disabled):hover {
@@ -550,9 +560,15 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-journey:not(:disabled):active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+}
+
 .btn-journey:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* STEP 4: 메인 고백 */
