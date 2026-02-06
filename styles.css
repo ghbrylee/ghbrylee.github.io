@@ -132,7 +132,8 @@ body {
     border-radius: 20px;
     padding: 35px 25px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
+    max-width: 400px;
+    width: 90%;
     text-align: center;
     animation: cardAppear 0.8s ease-out;
     margin-bottom: 30px;
@@ -440,18 +441,39 @@ body {
     padding: 30px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     position: relative;
-    animation: ticketShake 0.5s ease-out 0.8s;
+    animation: ticketShake 1.2s ease-out 0.8s;
 }
 
 @keyframes ticketShake {
     0%, 100% {
         transform: rotate(0deg);
     }
+    8.33% {
+        transform: rotate(-3deg);
+    }
+    16.66% {
+        transform: rotate(3deg);
+    }
     25% {
-        transform: rotate(-2deg);
+        transform: rotate(0deg);
+    }
+    33.33% {
+        transform: rotate(-3deg);
+    }
+    41.66% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    58.33% {
+        transform: rotate(-3deg);
+    }
+    66.66% {
+        transform: rotate(3deg);
     }
     75% {
-        transform: rotate(2deg);
+        transform: rotate(0deg);
     }
 }
 
@@ -771,11 +793,21 @@ body {
     }
 }
 
+.confession-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px auto 0;
+    width: 90%;
+    max-width: 300px;
+    animation: fadeInUp 0.8s ease-out 1s both;
+    align-items: center;
+}
+
 .btn-confession {
     background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
     color: white;
-    margin-top: 30px;
-    animation: fadeInUp 0.8s ease-out 1s both;
+    width: 100%;
 }
 
 /* STEP 5: 뉴욕 데이트 티저 */

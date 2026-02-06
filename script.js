@@ -232,9 +232,9 @@ function typeConfession() {
             clearInterval(typingInterval);
             // 버튼 표시
             setTimeout(() => {
-                const btn = document.getElementById('confessionBtn');
-                if (btn) {
-                    btn.style.display = 'block';
+                const buttons = document.getElementById('confessionButtons');
+                if (buttons) {
+                    buttons.style.display = 'flex';
                 }
             }, 500);
         }
