@@ -1021,6 +1021,12 @@ body {
         rgba(15, 15, 25, 1) 100%);
 }
 
+/* STEP 5는 사진을 풀블리드로 보여주기 위해 좌우 패딩 제거 */
+#step5.step.active {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .btn-save,
 .btn-screenshot {
     background: rgba(255, 255, 255, 0.9);
