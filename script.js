@@ -198,8 +198,15 @@ function showStep(stepNumber) {
                 }, 500);
             }
             
-            // STEP 5 표시 시 이미지 로드 처리
+            // STEP 5 표시 시 Celebration 효과 생성
             if (stepNumber === 5) {
+                setTimeout(() => {
+                    createCelebrationHearts();
+                }, 100);
+            }
+            
+            // STEP 6 표시 시 이미지 로드 처리
+            if (stepNumber === 6) {
                 const photo = document.getElementById('endingPhoto');
                 if (photo) {
                     // HEIC 파일이 로드되지 않을 경우를 대비한 fallback
@@ -293,7 +300,15 @@ function handleJourney() {
 
 // STEP 4: 고백 버튼 클릭
 function handleConfession() {
-    showStep(5);
+    // 0.2~0.3초 딜레이 후 Celebration Screen 표시
+    setTimeout(() => {
+        showStep(5);
+    }, 250);
+}
+
+// STEP 5: Celebration Screen 버튼 클릭
+function handleCelebration() {
+    showStep(6);
 }
 
 // STEP 6: 힌트 공개 (일시적으로 주석처리)
@@ -415,6 +430,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기 버튼 상태 설정 (비활성화)
     toggleRSVPSendButton();
 });
+
+// Celebration Screen 하트 효과 생성 (1회만, 밀도 낮게)
+function createCelebrationHearts() {
+    const heartsContainer = document.getElementById('celebrationHearts');
+    if (!heartsContainer) return;
+    
+    heartsContainer.innerHTML = '';
+    
+    const heartEmojis = ['💕', '💖', '💗', '💓'];
+    const heartCount = 8; // 밀도 낮게
+    
+    for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'celebration-heart';
+        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        
+        const size = Math.random() * 10 + 20; // 20-30px
+        const startX = 50 + (Math.random() - 0.5) * 30; // 중앙 기준 ±15%
+        const drift = (Math.random() - 0.5) * 100; // 좌우로 퍼지는 정도
+        const duration = Math.random() * 0.5 + 1.5; // 1.5-2초
+        
+        heart.style.fontSize = size + 'px';
+        heart.style.left = startX + '%';
+        heart.style.setProperty('--drift', drift);
+        heart.style.animation = `celebrationFloat ${duration}s ease-out forwards`;
+        heart.style.animationDelay = (Math.random() * 0.2) + 's';
+        heart.style.opacity = '0';
+        
+        heartsContainer.appendChild(heart);
+    }
+}
 
 // 추가 떠다니는 하트 생성
 function createFloatingHearts() {

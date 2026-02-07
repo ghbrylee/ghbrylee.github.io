@@ -851,7 +851,101 @@ body {
     width: 100%;
 }
 
-/* STEP 5: 뉴욕 데이트 티저 */
+/* STEP 5: Celebration Screen */
+.celebration-container {
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    max-width: calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px);
+    padding: 0 calc(20px + env(safe-area-inset-left, 0));
+    padding-right: calc(20px + env(safe-area-inset-right, 0));
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.celebration-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.celebration-heart {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    pointer-events: none;
+}
+
+@keyframes celebrationFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(0.8);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) translateX(calc(var(--drift, 0) * 1px)) scale(1.2);
+    }
+}
+
+.celebration-main {
+    font-size: 48px;
+    color: #d63384;
+    font-weight: 700;
+    margin: 0;
+    animation: celebrationBounce 0.6s ease-out;
+    text-shadow: 0 2px 8px rgba(214, 51, 132, 0.2);
+}
+
+@keyframes celebrationBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.celebration-sub {
+    font-size: 18px;
+    color: #d63384;
+    margin: 0;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+    max-width: 300px;
+}
+
+.btn-celebration {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: white;
+    width: 100%;
+    max-width: min(300px, calc(100% - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0) - 40px));
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+    margin-top: 10px;
+}
+
+.btn-celebration:hover {
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+    transform: translateY(-2px);
+}
+
+/* STEP 6: 뉴욕 데이트 티저 */
 .nyc-skyline {
     position: fixed;
     bottom: calc(-1 * env(safe-area-inset-bottom, 0));
@@ -1040,7 +1134,7 @@ body {
 
 
 /* 사진과 배경이 자연스럽게 이어지도록 */
-#step5 {
+#step6 {
     background: linear-gradient(to bottom, 
         transparent 0%,
         transparent 75vh,
@@ -1048,8 +1142,8 @@ body {
         rgba(15, 15, 25, 1) 100%);
 }
 
-/* STEP 5는 사진을 풀블리드로 보여주기 위해 좌우 패딩 제거 (notch 아이폰 대응) */
-#step5.step.active {
+/* STEP 6는 사진을 풀블리드로 보여주기 위해 좌우 패딩 제거 (notch 아이폰 대응) */
+#step6.step.active {
     padding-left: 0;
     padding-right: 0;
     padding-top: calc(env(safe-area-inset-top, 0));
@@ -1153,6 +1247,20 @@ body {
     .confession-text {
         font-size: 24px;
         padding: 0 20px;
+    }
+    
+    .celebration-main {
+        font-size: 36px;
+    }
+    
+    .celebration-sub {
+        font-size: 16px;
+        max-width: 280px;
+    }
+    
+    .btn-celebration {
+        font-size: 16px;
+        padding: 16px 25px;
     }
     
     .teaser-title {
