@@ -183,10 +183,11 @@ body {
 
 .card-from {
     font-size: 18px;
-    color: #d63384;
+    color: #d63384 !important;
     font-weight: 600;
     margin-top: 15px;
     text-align: right;
+    -webkit-text-fill-color: #d63384;
 }
 
 .card-body {
@@ -1100,6 +1101,8 @@ body {
     
     .card-from {
         font-size: 16px;
+        color: #d63384 !important;
+        -webkit-text-fill-color: #d63384;
     }
     
     .card-line {
