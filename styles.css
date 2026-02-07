@@ -168,6 +168,14 @@ body {
     text-align: left;
 }
 
+.card-from {
+    font-size: 18px;
+    color: #d63384;
+    font-weight: 600;
+    margin-top: 15px;
+    text-align: right;
+}
+
 .card-body {
     text-align: left;
     line-height: 1.8;
