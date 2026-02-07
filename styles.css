@@ -170,14 +170,14 @@ body {
 .card-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
 }
 
 .card-to {
     font-size: 18px;
     color: #d63384;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     text-align: left;
 }
 
@@ -185,7 +185,7 @@ body {
     font-size: 18px;
     color: #d63384 !important;
     font-weight: 600;
-    margin-top: 15px;
+    margin-top: 5px;
     text-align: right;
     -webkit-text-fill-color: #d63384;
 }
@@ -193,7 +193,7 @@ body {
 .card-body {
     text-align: left;
     line-height: 1.8;
-    margin: 5px 0;
+    margin: 0;
 }
 
 .card-line {
