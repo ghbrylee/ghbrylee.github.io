@@ -372,8 +372,35 @@ function saveBoardingPass() {
     });
 }
 
+// 아이폰 스크롤 방지
+function preventIOSScroll() {
+    // 터치 이벤트로 인한 스크롤 방지
+    document.addEventListener('touchmove', (e) => {
+        // 입력 필드나 스크롤 가능한 영역이 아닌 경우에만 방지
+        if (!e.target.closest('input') && !e.target.closest('textarea') && !e.target.closest('.rsvp-options')) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // 더블 탭 줌 방지
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+    
+    // 바운스 스크롤 방지
+    document.body.style.webkitOverflowScrolling = 'touch';
+}
+
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', () => {
+    // 아이폰 스크롤 방지
+    preventIOSScroll();
+    
     // 추가 떠다니는 하트 생성
     createFloatingHearts();
     

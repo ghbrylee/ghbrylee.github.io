@@ -2,6 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    height: 100%;
+    height: -webkit-fill-available;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -10,6 +20,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
+    height: -webkit-fill-available;
     margin: 0;
     padding: 0;
     padding-top: env(safe-area-inset-top);
@@ -19,6 +30,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
 }
 
 /* 공통 스타일 */
@@ -114,7 +128,6 @@ body {
 .step1-header {
     text-align: center;
     margin-bottom: 20px;
-    padding-top: calc(env(safe-area-inset-top, 0) + 10px);
     animation: fadeIn 0.8s ease-out;
 }
 
@@ -1034,10 +1047,12 @@ body {
         rgba(15, 15, 25, 1) 100%);
 }
 
-/* STEP 5는 사진을 풀블리드로 보여주기 위해 좌우 패딩 제거 */
+/* STEP 5는 사진을 풀블리드로 보여주기 위해 좌우 패딩 제거 (notch 아이폰 대응) */
 #step5.step.active {
     padding-left: 0;
     padding-right: 0;
+    padding-top: calc(env(safe-area-inset-top, 0));
+    padding-bottom: calc(env(safe-area-inset-bottom, 0));
 }
 
 .btn-save,
@@ -1053,6 +1068,25 @@ body {
     box-shadow: 0 6px 20px rgba(214, 51, 132, 0.3);
 }
 
+/* 아이폰 특화 스타일 */
+@supports (-webkit-touch-callout: none) {
+    /* iOS Safari 전용 스타일 */
+    body {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        height: -webkit-fill-available;
+        overflow: hidden;
+    }
+    
+    .step {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+}
+
 /* 반응형 디자인 */
 @media (max-width: 480px) {
     /* STEP 1 반응형 */
@@ -1061,6 +1095,10 @@ body {
     }
     
     .card-to {
+        font-size: 16px;
+    }
+    
+    .card-from {
         font-size: 16px;
     }
     
